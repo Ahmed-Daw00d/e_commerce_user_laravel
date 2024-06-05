@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\staticController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,4 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home.index');
+
+ Route::get('/about',[staticController::class,'about'])->name('home.about');
+ Route::get('/contact',[staticController::class,'contact'])->name('home.contact');
