@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\staticController;
+use App\Http\Controllers\productsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,9 +14,10 @@ use App\Http\Controllers\staticController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home.index');
+Route::get('/', [staticController::class, 'home'])->name('home.index');
 
- Route::get('/about',[staticController::class,'about'])->name('home.about');
- Route::get('/contact',[staticController::class,'contact'])->name('home.contact');
+Route::get('/about', [staticController::class, 'about'])->name('home.about');
+Route::get('/contact', [staticController::class, 'contact'])->name('home.contact');
+
+Route::resources(['products' => productsController::class]);
+

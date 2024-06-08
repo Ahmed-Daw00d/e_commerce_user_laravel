@@ -133,3 +133,7 @@ nav a:hover {
     background-color: #45a049;
   }
 /* end contact page */
+.allProduct .card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
