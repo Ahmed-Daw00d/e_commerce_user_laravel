@@ -25,7 +25,7 @@
         <ul>
             <li><a href="{{route('home.index')}}">Home</a></li>
             <li><a href="#">Cart</a></li>
-            <li><a  onclick="#">❤️</a></li>
+            <li><a href="#">❤️</a></li>
             <li><a href="{{route('home.about')}}">About Us</a></li>
             <li><a href="{{route('home.contact')}}">Contact</a></li>
         </ul>
@@ -33,7 +33,8 @@
     <div class="container">
         @yield('content')
     </div>
+     <script src="{{url('js/myJs.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="{{url('js/myJs.js')}}"></script>
+ 
 </body>
 </html>
