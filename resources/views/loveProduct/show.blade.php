@@ -25,15 +25,15 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $product['title'] }}</h5>
                         <p class="card-text">{{ $product['description'] }}</p>
-                        <p class="card-text"><strong>Category:</strong> {{ $product['category'] }}</p>
+                        <p class="card-text"><strong>Category:</strong> {{ $product['category']}}</p>
                         <p class="card-text"><strong>Price:</strong> ${{ $product['price'] }}</p>
                         <p class="card-text"><strong>Stock:</strong> {{ $product['stock'] }}</p>
                       
-                        <button class="btn btn-success mt-3">Add to Cart</button>
-                   <form action="{{route('loveProduct.store')}}" method="post">
+                        <button class="btn btn-outline-success mt-3">Add to Cart</button>
+                   <form action="{{route('loveProduct.destroy',$product['id'])}}" method="post">
                     @csrf
-                    <input type="text" name="id" value="{{$product['id']}}" hidden readonly>
-                    <button class="btn btn-success mt-3" onclick="loveProduct({{ json_encode($product)}})" type="submit">Add to ❤️</button>
+                    
+                    <button class="btn btn-outline-danger mt-3"  type="submit">delete💔</button>
                    </form>
                            
                         

@@ -11,7 +11,7 @@
             localStorage.setItem('lovedProducts', JSON.stringify(lovedProducts));
             alert('Product added to favorites');
         } else {
-            alert('Product is already in favorites');
+            console.log('Product is already in favorites');
         }
     }
 

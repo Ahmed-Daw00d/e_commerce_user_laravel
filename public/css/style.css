@@ -133,7 +133,15 @@ nav a:hover {
     background-color: #45a049;
   }
 /* end contact page */
+/* all products page */
 .allProduct .card-img-top {
-    height: 200px;
+    height: 250px;
     object-fit: cover;
+    position: relative;
 }
+.love{
+width: 50px;
+position:absolute;
+right: 0px;
+}
+/*end all products page */
