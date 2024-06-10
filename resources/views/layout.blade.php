@@ -24,7 +24,7 @@
         </div>
         <ul>
             <li><a href="{{route('home.index')}}">Home</a></li>
-            <li><a href="#">Cart</a></li>
+            <li><a href="#">🛒</a></li>
             <li><a href="{{route('loveProduct.index')}}"">❤️</a></li>
             <li><a href="{{route('home.about')}}">About Us</a></li>
             <li><a href="{{route('home.contact')}}">Contact</a></li>
