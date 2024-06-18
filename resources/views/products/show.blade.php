@@ -29,11 +29,16 @@
                         <p class="card-text"><strong>Price:</strong> ${{ $product['price'] }}</p>
                         <p class="card-text"><strong>Stock:</strong> {{ $product['stock'] }}</p>
                       
-                        <button class="btn btn-success mt-3">Add to Cart</button>
+                        <form action="{{route('cart.store')}}" method="POST">
+                            @csrf
+                            <input type="text" name="id" value="{{$product['id']}}" readonly hidden>
+                            <input type="text" name="quantity" value="1" readonly hidden>
+                            <button type="submit" class="btn btn-outline-success mt-3">Add to Cart</button>
+                        </form>
                    <form action="{{route('loveProduct.store')}}" method="post">
                     @csrf
                     <input type="text" name="id" value="{{$product['id']}}" hidden readonly>
-                    <button class="btn btn-success mt-3" onclick="loveProduct({{ json_encode($product)}})" type="submit">Add to ❤️</button>
+                    <button class="btn btn-outline-success mt-3" onclick="loveProduct({{ json_encode($product)}})" type="submit">Add to ❤️</button>
                    </form>
                            
                         

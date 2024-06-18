@@ -5,39 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\LoveProduct;
 use Illuminate\Http\Request;
 use App\Models\Item;
-
+use App\Http\Controllers\myFunctionController;
 class LoveProductController extends Controller
 {
 
-    public function getMacAddress()
+    protected $myFunction;
+    public function __construct(myFunctionController $myFunctionController)
     {
-
-        $os = PHP_OS;
-
-        if (strpos($os, 'WIN') !== false) {
-            exec('getmac', $output);
-            foreach ($output as $line) {
-                if (preg_match('/([A-Fa-f0-9]{2}[:-]){5}([A-Fa-f0-9]{2})/', $line, $matches)) {
-                    $macAddress = $matches[0];
-                    break;
-                }
-            }
-        } else if (strpos($os, 'WIN') === false) {
-            exec('ifconfig -a', $output);
-            foreach ($output as $line) {
-                if (preg_match('/([A-Fa-f0-9]{2}[:-]){5}([A-Fa-f0-9]{2})/', $line, $matches)) {
-                    $macAddress = $matches[0];
-                    break;
-                }
-            }
-        } else {
-
-            $output = [];
-            exec('ifconfig -a', $output);
-            $macAddress = isset($output[0]) ? $output[0] : 'MAC Address not found';
-        }
-
-        return  $macAddress;
+        $this->myFunction=$myFunctionController;
     }
     /**
      * Display a listing of the resource.
@@ -54,7 +29,7 @@ class LoveProductController extends Controller
      */
     public function store(Request $request)
     {
-        $macAddress = $this->getMacAddress();
+        $macAddress = $this->myFunction->getMacAddress();
         $product = Item::findOrFail($request->input('id'));
 
         $existingLoveProduct = LoveProduct::where('mac', $macAddress)

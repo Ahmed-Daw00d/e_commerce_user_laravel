@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('description');
             $table->string('category');
-            $table->integer('price');
+            $table->integer('price')->unsigned();;
             $table->string('stock');
             $table->timestamps();
         });
