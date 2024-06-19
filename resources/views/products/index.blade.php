@@ -53,11 +53,13 @@
                 <div class="col-md-4">
                     <div class="card mb-4">
                         <img src="{{ asset('storage/'.$product->image) }}" class="card-img-top " alt="{{ $product->title }}">
+                        {{-- love --}}
                         <form class="love" action="{{route('loveProduct.store')}}" method="post">
                             @csrf
                             <input type="text" name="id" value="{{$product['id']}}" hidden readonly>
-                            <button class=" btn btn-outline-success mt-3" onclick="loveProduct({{ json_encode($product)}})" type="submit"> ❤️</button>
+                            <button class=" btn btn-outline-success mt-3"  type="submit"> ❤️</button>
                            </form>
+                           {{-- end love --}}
                         <div class="card-body">
                             <a href="{{ route('products.show', $product->id) }}" class="btn"><h5 class="card-title">{{ $product->title }}</h5></a>
                             

@@ -32,8 +32,8 @@ class LoveProductController extends Controller
         $macAddress = $this->myFunction->getMacAddress();
         $product = Item::findOrFail($request->input('id'));
 
-        $existingLoveProduct = LoveProduct::where('mac', $macAddress)
-        ->where('title', $product->title)
+        $existingLoveProduct = LoveProduct::where('mac', $macAddress)->where('id', $product->id)
+        ->where('title', $product->title)->where('price', $product->price)->where('stock', $product->stock)->where('category', $product->category)->where('description', $product->description)
         ->first();
 
         if (!$existingLoveProduct) {
@@ -49,7 +49,7 @@ class LoveProductController extends Controller
             $loveProduct->save();
             return redirect()->route('loveProduct.index')->with('success', 'Product added to love list successfully.');
         }
-        return redirect()->route('products.show', $request->input('id'))->with('error', 'Product is already in your love list.');
+        return redirect()->route('products.index')->with('error', 'Product is already in your love list.');
     }
 
     /**

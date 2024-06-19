@@ -38,7 +38,7 @@
                    <form action="{{route('loveProduct.store')}}" method="post">
                     @csrf
                     <input type="text" name="id" value="{{$product['id']}}" hidden readonly>
-                    <button class="btn btn-outline-danger mt-3" onclick="loveProduct({{ json_encode($product)}})" type="submit">Add to ❤️</button>
+                    <button class="btn btn-outline-danger mt-3" type="submit">Add to ❤️</button>
                    </form></div>
                        
                            
