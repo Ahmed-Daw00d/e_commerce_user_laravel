@@ -41,7 +41,7 @@ class CartController extends Controller
         $product = Item::findOrFail($request->input('id'));
         $index = new Cart();
         $existing = Cart::where('mac', $mac)->where('title', $product['title'])->where('price', $product['price'])->where('description', $product['description'])->where('stock', $product['stock'])->first();
-        if (!$existing) {
+        if (!$existing && $product['stock'] !='out stock') {
             $index->id = $product->id;
             $index->image = $product->image;
             $index->title = $product->title;
@@ -53,6 +53,9 @@ class CartController extends Controller
             $index->quantity = $request->input('quantity');
             $index->save();
             return redirect()->route('cart.index')->with('success', 'Product added to cart list successfully.');
+        }
+        else if($product['stock'] =='out stock'){
+            return redirect()->route('products.index')->with('error', 'sorry This product is currently not available. We will provide it as soon as possible.');
         }
         else{
             $existing->quantity += $request->input('quantity');

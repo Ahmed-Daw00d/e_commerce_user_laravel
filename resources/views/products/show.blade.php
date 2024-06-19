@@ -28,8 +28,8 @@
                         <p class="card-text"><strong>Category:</strong> {{ $product['category'] }}</p>
                         <p class="card-text"><strong>Price:</strong> ${{ $product['price'] }}</p>
                         <p class="card-text"><strong>Stock:</strong> {{ $product['stock'] }}</p>
-                      
-                        <form action="{{route('cart.store')}}" method="POST">
+                      <div class="d-flex ">
+                         <form action="{{route('cart.store')}}" class="me-3" method="POST">
                             @csrf
                             <input type="text" name="id" value="{{$product['id']}}" readonly hidden>
                             <input type="text" name="quantity" value="1" readonly hidden>
@@ -38,8 +38,9 @@
                    <form action="{{route('loveProduct.store')}}" method="post">
                     @csrf
                     <input type="text" name="id" value="{{$product['id']}}" hidden readonly>
-                    <button class="btn btn-outline-success mt-3" onclick="loveProduct({{ json_encode($product)}})" type="submit">Add to ❤️</button>
-                   </form>
+                    <button class="btn btn-outline-danger mt-3" onclick="loveProduct({{ json_encode($product)}})" type="submit">Add to ❤️</button>
+                   </form></div>
+                       
                            
                         
                     </div>
